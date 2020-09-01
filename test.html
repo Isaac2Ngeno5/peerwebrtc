@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta chatset='utf-8'>
+    <title>WebRTC Video Chat</title>
+  </head>
+  <body>
+    <div>
+      <input type='text' id='js-myself-id' placeholder='Input your ID'>
+      <span id='js-peer-id'></span>
+      <button id='js-open'>Open</button>
+      <input disabled type='text' id='js-partner-id' placeholder='Input partner ID'>
+      <button disabled id='js-connect'>Connect</button>
+    </div>
+    <div>
+      <video id='js-video-myself'></video>
+    </div>
+    <div>
+      <video id='js-video-partner'></video>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
+    <script src='app.js'></script>
+  </body>
+</html>
