@@ -13,7 +13,14 @@
   <body>
     <h1>Hello, world!</h1>
 
-    <button id="call">Call</button>
+    <form action="#" method="post" class="container form-horizontal">
+        <div class="form-group">
+            <label for="">Destination Id</label>
+            <input type="text" id="dest_partner_id" name="dest" class="form-control">
+            <button type="submit" class="btn btn-success" id="call">Call</button>
+        </div>
+    </form>
+    <div id="content" class="container"></div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -28,17 +35,11 @@
             console.log("works");
             var peer = new Peer();
             peer.on('open', function(id) {
-             $('#call').on('click',function(){
-                    var conn = peer.connect('u14tcp1sj8c00000');
-                    peer.on('connection', function(conn) {
-      console.log("connected ",conn);
-  });
-                });
-
   console.log('My peer ID is: ' + id);
-  
+});
 
-  
+$('#call').on('click', function(){
+
 });
 
         });
