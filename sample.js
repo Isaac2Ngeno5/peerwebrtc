@@ -1,7 +1,8 @@
 (function(global) {
 
     // Compatibility
-    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
+    navigator.getUserMedia_ = (navigator.getUserMedia || navigator.webkitGetUserMedia
+     || navigator.mozGetUserMedia || navigator.msGetUserMedia);
   
     var peerClient;
     var currentPeerConnection;
@@ -18,7 +19,7 @@
       var videoMyself = document.querySelector('#js-video-myself');
       var videoPartner = document.querySelector('#js-video-partner');
   
-      navigator.getUserMedia({video: true, audio: true}, function(stream) {
+      navigator.getUserMedia_({video: true, audio: true}, function(stream) {
         videoMyself.srcObject = stream;
         videoMyself.play();
         localMediaStream = stream;
