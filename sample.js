@@ -19,7 +19,7 @@
       var videoPartner = document.querySelector('#js-video-partner');
   
       navigator.getUserMedia({video: true, audio: true}, function(stream) {
-        videoMyself.src = URL.createObjectURL(stream);
+        videoMyself.srcObject = stream;
         videoMyself.play();
         localMediaStream = stream;
       });
