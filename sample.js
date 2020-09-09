@@ -5,7 +5,7 @@
      || navigator.mozGetUserMedia || navigator.msGetUserMedia);
   
     var peerClient;
-    var currentPeerConnection;
+    var currentPeerConnection = [];
     var peers = [];
     var localMediaStream;
   
@@ -55,7 +55,7 @@
           
           // wait for partner's stream
           call.on('stream', function(stream) {
-            videoPartner.srcObject = stream;
+            //videoPartner.srcObject = stream;
             //videoPartner.play();
             caller.stream = stream;
           });
@@ -82,7 +82,7 @@
         $connect.removeAttr('disabled');
       });
   
-      $connect.on('click', function(e) {
+      /*$connect.on('click', function(e) {
         // if peerClient is not initialized
         if (!peerClient) {
           return;
@@ -112,6 +112,6 @@
           console.log('Connection is closed.');
         });
       });
-    });
+    });*/
   
   })(this);
