@@ -98,6 +98,7 @@
         call.on('stream', function(stream) {
           videoPartner.srcObject = stream;
           videoPartner.play();
+          console.log(peers);
         });
   
         // if connection is closed
