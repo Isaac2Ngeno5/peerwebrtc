@@ -58,6 +58,7 @@
             caller.stream = stream;
           });
           
+          console.log(caller);
           peers.push(caller);
           // if connection is closed
           call.on('close', function() {
