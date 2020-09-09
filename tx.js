@@ -7,7 +7,7 @@
     var peerTeacher;
     var currentPeerConnection;
     var peers = [];
-    var streams = []
+    var peerConnections = {};
     var localMediaStream;
   
     $(function() {
@@ -19,6 +19,7 @@
       //var $connect = $('#js-connect');
       var videoMyself = document.querySelector('#js-video-myself');
       var videoPartner = document.querySelector('#js-video-partner');
+      var videoStudent = document.querySelector('#js-video-student');
       //var append_pats = document.querySelector('');
   
       navigator.getUserMedia_({video: true, audio: true}, function(stream) {
@@ -54,14 +55,19 @@
           //currentPeerConnection = call;
 
           //caller.call = call;
+
+          peerConnections[call.peer] = {call: call, stream: {}};
+          $('<li id="'+call.peer+'">'+call.peer+'</li>').appendTo('#List_of_Class_Participants');
           
           // wait for partner's stream
           call.on('stream', function(stream) {
             //videoPartner.srcObject = stream;
             //videoPartner.play();
             //caller.stream = stream;
-            streams.push({id: call.peer, call: call, stream: stream});
-            $("<li>"+call.peer+"</li>").appendTo('#List_of_Class_Participants');
+            let peerx = peerConnections[call.peer];
+            peerx.stream = stream;
+            peerConnections[call.peer] = peerx;
+            
           });
           
           console.log(caller);
@@ -74,6 +80,15 @@
           call.on('close', function() {
             console.log('Connection is closed.');
           });
+
+          $('li').on('click', function(e){
+              e.preventDefault();
+              e.stopPropagation();
+
+              let p = peerConnections[$(this).attr('id')];
+              videoStudent.srcObject = p.stream;
+              videoStudent.play();
+          })
         });
         
         // disable id input
