@@ -18,6 +18,7 @@
       var $connect = $('#js-connect');
       var videoMyself = document.querySelector('#js-video-myself');
       var videoPartner = document.querySelector('#js-video-partner');
+      var append_pats = document.querySelector('#List_of_Class_Participants');
   
       navigator.getUserMedia_({video: true, audio: true}, function(stream) {
         videoMyself.srcObject = stream;
@@ -28,7 +29,7 @@
       $open.on('click', function(e) {
         // create peer object
         var myselfId = $myselfId.val();
-        peerClient = new Peer();
+        peerClient = new Peer(myselfId);
   
   
         // if peer connection is opened
@@ -61,6 +62,10 @@
           
           console.log(caller);
           peers.push(caller);
+          //append the caller id to the dom
+          append_pats.append( "<li>"+caller.call.peer+"</li>" );
+
+
           // if connection is closed
           call.on('close', function() {
             console.log('Connection is closed.');
