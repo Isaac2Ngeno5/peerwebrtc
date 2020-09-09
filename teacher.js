@@ -19,7 +19,7 @@
       //var $connect = $('#js-connect');
       var videoMyself = document.querySelector('#js-video-myself');
       var videoPartner = document.querySelector('#js-video-partner');
-      var append_pats = document.querySelector('#List_of_Class_Participants');
+      //var append_pats = document.querySelector('');
   
       navigator.getUserMedia_({video: true, audio: true}, function(stream) {
         videoMyself.srcObject = stream;
@@ -61,7 +61,7 @@
             //videoPartner.play();
             //caller.stream = stream;
             streams.push({id: call.peer, call: call, stream: stream});
-            append_pats.append( "<li>"+call.peer+"</li>" );
+            $("<li>"+call.peer+"</li>").appendTo('#List_of_Class_Participants');
           });
           
           console.log(caller);
