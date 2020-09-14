@@ -20,10 +20,7 @@
             <button type="submit" class="btn btn-success" id="call">Call</button>
         </div>
     </form>
-    <div id="content" class="container">
-
-      <video id='screencast' style="max-width: fit-content;"></video>
-    </div>
+    <div id="content" class="container"></div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -35,21 +32,15 @@
         $(document).ready(function(){
             'use strict';
 
-            let displayMediaOptions = {video: true, audio: true};
-            async function startCapture(displayMediaOptions) {
-  let captureStream = null;
+            console.log("works");
+            var peer = new Peer();
+            peer.on('open', function(id) {
+  console.log('My peer ID is: ' + id);
+});
 
-  try {
-    captureStream = await navigator.mediaDevices.getDisplayMedia(displayMediaOptions);
-  } catch(err) {
-    console.error("Error: " + err);
-  }
-  return captureStream;
+$('#call').on('click', function(){
 
-}
-
-$('#screencast').srcObject = startCapture(displayMediaOptions);
-$('#screencast').play();
+});
 
         });
     </script>
