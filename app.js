@@ -1,35 +1,32 @@
 (function(){
     "use strict";
+    const myVideo = document.querySelector("#myVideo");
 
-    console.log("app loaded");
+    var peer, call, user;
 
-    const username = document.querySelector("#username");
-    const register = document.querySelector("#register");
-    const form = document.querySelector("#registration");
+    $user = new URL(window.location.href).searchParams.get("user");
 
-    var peer;
-
-    const container = document.querySelector(".container");
-
-    form.addEventListener("submit", function(event){
-        event.preventDefault();
-let user = username.value;
-        if(user !== ""){  
-            createPeer(user);          
-        console.log(user);
-        }else{
-            alert("please provide a username");
-        } 
+    navigator.mediaDevices.getUserMedia({video:true,audio:true})
+    .then(function(stream){
+        myVideo.srcObject = stream;
+        myVideo.play();
+    }).catch(function(err){
+        console.log(err);
     });
 
-
+    console.log(user);
     function createPeer(username){
-        peer = new peer(username);
+        peer = new Peer(username);
 
         peer.on("open", function(peerid){
             console.log(`peer id : ${peerid}`);
         });
     }
 
+    // function makeCall(otherUser){
+    //     call = peer.call(otherUser, function(){
+
+    //     })
+    // }
 
 }(document));
