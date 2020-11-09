@@ -9,7 +9,7 @@
         event.preventDefault();
         let user = username.value;
         if(user !== ""){
-            window.location = `app.html?user="${user}"`;         
+            window.location = `app.html?user=${user}`;         
        // console.log(user);
         }else{
             alert("please provide a username");
